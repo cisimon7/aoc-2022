@@ -14,3 +14,13 @@ fun readInput(name: String) = File("src/main/resources", "$name.txt")
 fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
     .toString(16)
     .padStart(32, '0')
+
+
+fun <E> List<List<E>>.transpose(): List<List<E>> {
+    val list = this
+    return buildList {
+        list.first().indices.forEach { i ->
+            add(list.map { it[i] })
+        }
+    }
+}
