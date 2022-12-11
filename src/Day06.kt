@@ -1,14 +1,7 @@
 fun main() {
     fun posUniqueSequence(signal: String, count: Int): Int {
-        val groups = signal.windowedSequence(count, 1)
-        val idx = groups.indexOfFirst { it.toSet().size == count }
-        val substring = signal.substring(0, idx)
-        val overlap = signal
-            .substring(idx, idx + count).scan("") { acc, ch -> acc + ch }
-            .drop(1).indexOfFirst { seg ->
-                signal.substring(0, idx).endsWith(seg)
-            }.let { if (it == -1) 0 else it }
-        return substring.length + count - overlap
+        val idx = signal.windowedSequence(count, 1).indexOfFirst { it.toSet().size == count }
+        return idx + count
     }
 
     fun part1(signals: List<String>): List<Int> {

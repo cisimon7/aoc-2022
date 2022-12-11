@@ -24,3 +24,15 @@ fun <E> List<List<E>>.transpose(): List<List<E>> {
         }
     }
 }
+
+inline fun <T> Iterable<T>.takeUntil(predicate: (T) -> Boolean): List<T> {
+    val list = ArrayList<T>()
+    for (item in this) {
+        if (!predicate(item)) {
+            list.add(item)
+            break
+        }
+        list.add(item)
+    }
+    return list
+}

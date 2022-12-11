@@ -18,7 +18,7 @@ fun main() {
             .map { line -> line.split(" ") }
             .map { Pair(it[0], it[1]) }
             .map { (elf, me) -> abcMap(elf) to xyzMap(me).first }
-            .sumOf { (elf, you) -> you.play(elf) }
+            .sumOf { (elf, me) -> me.play(elf) }
     }
 
     fun part2(input: List<String>): Int {
